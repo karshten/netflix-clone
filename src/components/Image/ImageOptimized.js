@@ -17,7 +17,7 @@ export const ImageOptimized = ({src, alt, ...props}) => {
 
   return (
      <LazyLoad once>
-        <img {...props} src={imgSrc} alt={alt} loading="lazy"/>
+        <img key={src} {...props} src={imgSrc} alt={alt} loading="lazy"/>
      </LazyLoad>
   );
 };
