@@ -1,0 +1,14 @@
+.header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  padding: 20px 0;
+  background: transparent;
+  z-index: 3;
+}
+
+.header__nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
