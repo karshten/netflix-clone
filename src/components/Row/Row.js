@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react"
 import './row.css';
 import { instance } from "../../requester";
 import { BASE_IMAGE_URL } from "../../constants/constants";
-import { ImageOptimized } from "../Image/ImageOptimized";
 import { motion } from 'framer-motion'
 
 export const Row = ({title, fetchUrl, isLargeRow}) => {
@@ -40,7 +39,7 @@ export const Row = ({title, fetchUrl, isLargeRow}) => {
             transition={{ duration: 1 }}
             className="row__item" key={movie.id}
           >
-            <ImageOptimized
+            <img
               className={`row__poster ${isLargeRow && "row__posterLarge"}`}
               src={`
                 ${BASE_IMAGE_URL}/${isLargeRow ? movie.poster_path : movie.backdrop_path}
