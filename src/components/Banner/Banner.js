@@ -4,9 +4,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { getBannerMovie } from "../../features/bannerMovie";
 import { BASE_IMAGE_URL } from "../../constants/constants";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
+import { useNavigate } from "react-router-dom";
 
 export const Banner = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const { movie, status } = useSelector(state => state).bannerMovie;
 
   const truncateText = (text, n = 200) => {
@@ -27,6 +30,10 @@ export const Banner = () => {
   const title = movie.name ?? movie.original_name ?? movie.title;
   const poster = isMobile ? movie.poster_path : movie.backdrop_path;
 
+  const handleWatch = () => {
+    navigate(`movies/${movie.id}`)
+  }
+
   return (
     <div 
       key={movie}
@@ -45,7 +52,7 @@ export const Banner = () => {
         <p className="banner__description">{truncateText(movie.overview)}</p>
 
         <div className="banner__buttons">
-          <button className="banner__btn">Watch</button>
+          <button className="banner__btn" onClick={handleWatch}>Watch</button>
           <button className="banner__btn">Movie list</button>
         </div>
       </div>

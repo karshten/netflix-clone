@@ -3,8 +3,9 @@ import './row.css';
 import { instance } from "../../requester";
 import { BASE_IMAGE_URL } from "../../constants/constants";
 import { motion } from 'framer-motion'
+import { Link } from "react-router-dom";
 
-export const Row = ({title, fetchUrl, isLargeRow}) => {
+export const Row = ({title, fetchUrl, isLargeRow, excludedId, ...props}) => {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
@@ -26,7 +27,7 @@ export const Row = ({title, fetchUrl, isLargeRow}) => {
 
       <ul className="row__list">
         {movies.length > 0 && movies.map(movie => (
-          !!(movie.poster_path && movie.backdrop_path) && 
+          !!(movie.poster_path && movie.backdrop_path) && movie.id !== excludedId &&
           <motion.li 
             initial={{
               translateX: 30,
@@ -39,13 +40,15 @@ export const Row = ({title, fetchUrl, isLargeRow}) => {
             transition={{ duration: 1 }}
             className="row__item" key={movie.id}
           >
-            <img
-              className={`row__poster ${isLargeRow && "row__posterLarge"}`}
-              src={`
-                ${BASE_IMAGE_URL}/${isLargeRow ? movie.poster_path : movie.backdrop_path}
-              `} 
-              alt={movie.name}
-            />
+            <Link to={`/movies/${movie.id}`}>
+              <img
+                className={`row__poster ${isLargeRow && "row__posterLarge"}`}
+                src={`
+                  ${BASE_IMAGE_URL}/${isLargeRow ? movie.poster_path : movie.backdrop_path}
+                `} 
+                alt={movie.name}
+              />
+            </Link>
           </motion.li>
         ))}
       </ul>

@@ -15,20 +15,32 @@ function Home() {
           isLargeRow={true}
         />
         <Row
-          title="Actions movies"
+          title="Actions"
           fetchUrl={request.getActionsMovies}
         />
         <Row
-          title="Comedy movies"
+          title="Comedy"
           fetchUrl={request.getComedyMovies}
         />
         <Row
-          title="romance movies"
+          title="Romance"
           fetchUrl={request.getRomanceMovies}
         />
         <Row
-          title="Horror movies"
+          title="Horror"
           fetchUrl={request.getHorrorMovies}
+        />
+        <Row
+          title="Animation"
+          fetchUrl={request.getAnimation}
+        />
+        <Row
+          title="Adventure"
+          fetchUrl={request.getAdventure}
+        />
+        <Row
+          title="Crime"
+          fetchUrl={request.getCrimeMovies}
         />
         <Row
           title="Documentations"
