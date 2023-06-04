@@ -20,7 +20,7 @@ export const Row = ({title, fetchUrl, isLargeRow, excludedId, ...props}) => {
   }, [fetchUrl]);
 
   return (
-    <div className="row">
+    <div {...props} className="row">
       <div className="container">
         <h2 className="row__title">{title}</h2>
       </div>
@@ -41,12 +41,13 @@ export const Row = ({title, fetchUrl, isLargeRow, excludedId, ...props}) => {
             className="row__item" key={movie.id}
           >
             <Link to={`/movies/${movie.id}`}>
-              <img
+              <img key={movie.id}
                 className={`row__poster ${isLargeRow && "row__posterLarge"}`}
                 src={`
                   ${BASE_IMAGE_URL}/${isLargeRow ? movie.poster_path : movie.backdrop_path}
                 `} 
                 alt={movie.name}
+                loading="lazy"
               />
             </Link>
           </motion.li>
