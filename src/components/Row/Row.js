@@ -41,7 +41,8 @@ export const Row = ({title, fetchUrl, isLargeRow, excludedId, ...props}) => {
             className="row__item" key={movie.id}
           >
             <Link to={`/movies/${movie.id}`}>
-              <img key={movie.id}
+              <img 
+                key={movie.id}
                 className={`row__poster ${isLargeRow && "row__posterLarge"}`}
                 src={`
                   ${BASE_IMAGE_URL}/${isLargeRow ? movie.poster_path : movie.backdrop_path}

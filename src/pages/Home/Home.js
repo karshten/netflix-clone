@@ -15,6 +15,10 @@ function Home() {
           isLargeRow={true}
         />
         <Row
+          title="Top rated"
+          fetchUrl={request.getTopRated}
+        />
+        <Row
           title="Actions"
           fetchUrl={request.getActionsMovies}
         />

@@ -5,6 +5,7 @@ import { Header } from './components/Header/Header';
 import { Route, Routes } from 'react-router-dom';
 import { MovieDetail } from './pages/MovieDetail/MovieDetail';
 import { PATH } from './constants/constants';
+import { Movies } from './pages/Movies/Movies';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Routes>
         <Route path={PATH.home} element={<Home />} />
         <Route path={PATH.movieDetail} element={<MovieDetail/>}/>
+        <Route path={PATH.movies} element={<Movies/>}/>
       </Routes>
     </>
   );

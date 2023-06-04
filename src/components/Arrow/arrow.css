@@ -1,0 +1,9 @@
+.up,
+.down {
+  display: inline-block;
+  transition: transform .3s ease;
+}
+
+.up {
+  transform: rotate(180deg) translateY(-3px);
+}

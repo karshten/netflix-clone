@@ -7,6 +7,8 @@ import { useMediaQuery } from "../../hooks/useMediaQuery";
 import './movie.css'
 import { Row } from "../../components/Row/Row";
 import { request } from "../../requester";
+import { formatBudget, formatRuntime } from "../../helpers/formaters";
+import { format } from "date-fns";
 
 export const MovieDetail = () => {
   const { id }  = useParams();
@@ -22,45 +24,10 @@ export const MovieDetail = () => {
 
   if (!movie || movie.id === undefined || status === 'rejected' || status === 'loading') return null;
 
-  console.log(movie);
-
   const title = movie.name ?? movie.original_name ?? movie.title;
   const poster = isMobile ? movie.poster_path : movie.backdrop_path;
 
-  const hours = Math.floor(movie.runtime / 60);
-  const minutes = movie.runtime % 60;
-  const runtime = `${hours}h ${minutes > 0 ? minutes + 'm' : ''}`;
-
   const rating = Math.round(movie.rating);
-
-  const formatBudget = (number) => {
-    let divisorCount = 0;
-
-    while (number > 999) {
-      number = Math.floor(number / 1000);
-      divisorCount ++;
-    }
-
-    let suffix = '';
-
-    switch (divisorCount) {
-      case 2 : 
-        suffix = 'million'
-        break;
-      case 3 : 
-        suffix = 'milliard'
-        break;
-      default: suffix = 'thousand';
-    }
-
-    return `$${number} ${suffix}`;
-  };
-
-
-
-  console.log(
-    Object.keys(request).filter(r => r.toLowerCase().includes(movie?.genres[0]?.name?.toLowerCase()))
-  );
 
   return (
     <>
@@ -76,9 +43,10 @@ export const MovieDetail = () => {
         <div className="container">
             <div className="movie__content">
               <h1 className="movie__title">{title}</h1>
+              {movie.release_date && <p className="movie__release-date">{format(new Date(movie.release_date), 'dd-MM-yyyy')}</p>}
               {!!movie.tagline && <p className="movie__tagline">{movie.tagline}</p>}
               <p className="movie__description">{movie.overview}</p>
-              {movie.runtime > 0 && <p className="movie__runtime">{runtime}</p>}  
+              {movie.runtime > 0 && <p className="movie__runtime">{formatRuntime(movie.runtime)}</p>}  
               <p className="movie__status">Status: {movie.status}</p>
               {!!rating && <p>Rating: {rating}</p>}
               {movie.budget > 0 && <p className="movie__budget">Budget: {formatBudget(movie.budget)}</p>}

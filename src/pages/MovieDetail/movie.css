@@ -38,6 +38,10 @@
   margin: 30px 0 20px;
 }
 
+.movie__release-date {
+  margin-top: 15px;
+}
+
 .movie__runtime,
 .movie__budget,
 .movie__revenue,
