@@ -82,7 +82,7 @@ export const Movies = () => {
                   loading="lazy"
               />
               <div className="movies__item_details">
-                <h3 className="movies__item_title">{title}</h3>
+                <h3 className="movies__item_title">{truncateText(title, 20)}</h3>
                 {!!movie.release_date && <p>{format(new Date(movie.release_date), 'dd-MM-yyyy')}</p>}
                 {!!movie.overview?.length && <p>{truncateText(movie.overview)}</p>}
               </div>

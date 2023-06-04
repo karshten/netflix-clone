@@ -25,7 +25,7 @@ export const Select = ({options, label, changeOption}) => {
   useOutsideClick(selectRef, closeSelect, isOpen);
 
   return (
-    <div className="select">
+    <div className="select" ref={selectRef}>
       <div onClick={handleToggleMenu} className={`toggle ${isOpen ? 'open' : ''}`}>
         {label} <Arrow direction={isOpen ? 'up' : 'down'}/>
       </div>
