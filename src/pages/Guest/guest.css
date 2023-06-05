@@ -57,4 +57,16 @@
   .guest__title {
     font-size: 2rem;
   }
+
+  .guest__input {
+    width: 200px;
+  }
+
+  .guest__btn {
+    font-size: 14px;
+  }
+
+  .guest__email-error {
+    font-size: .8rem;
+  }
 }
