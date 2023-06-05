@@ -1,0 +1,15 @@
+.notFound__btn {
+  max-width: 300px;
+}
+
+.notfound__title, .notfound__description {
+  text-align: center;
+}
+
+.notfound__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: calc(100% - 200px);
+}

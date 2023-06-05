@@ -31,3 +31,24 @@ export const formatRuntime = (timeInMinutes) => {
 
   return `${hours}h ${minutes > 0 ? minutes + 'm' : ''}`;
 }
+
+
+export const formatAuthError = (error) => {
+  const defaultError = "An error occurred during authentication. Please try again.";
+  if (!error.message) return defaultError;
+
+  const errorCode = error.message.slice(error.message.indexOf('(') + 1, error.message.indexOf(')'));
+  
+  switch (errorCode) {
+    case "auth/user-not-found":
+      return "The provided email is not registered.";
+    case "auth/wrong-password":
+      return "The provided password is incorrect.";
+    case "auth/weak-password":
+      return "Password should be at least 6 characters";
+    case "auth/email-already-in-use":
+      return "This login is already signed up";
+    default:
+      return defaultError;
+  }
+};

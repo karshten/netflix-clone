@@ -4,7 +4,10 @@ export const BASE_IMAGE_URL = 'https://image.tmdb.org/t/p/original';
 export const PATH = {
   home: '/',
   movieDetail: 'movies/:id',
-  movies: 'movies'
+  movies: 'movies',
+  guest: '/guest',
+  login: '/login',
+  signUp: '/signUp',
 }
 
 export const genres = {

@@ -9,3 +9,10 @@
   fill: currentColor;
   display: block;
 }
+
+@media (max-width: 820px) {
+  .logo__icon {
+    width: 6.25rem;
+    height: 1.5rem;
+  }
+}
